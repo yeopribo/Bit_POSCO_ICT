@@ -1,0 +1,15 @@
+server:
+  port: 8081
+  
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    
+eureka:
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true

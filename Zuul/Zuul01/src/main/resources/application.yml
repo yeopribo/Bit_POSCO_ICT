@@ -1,0 +1,30 @@
+server:
+  port: 8765
+    
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  application:
+    name: api-gateway
+
+zuul:
+  routes:
+    service01:      # 유레카에 등록된 service01 서비스쪽으로 가세영
+      path: /app/** # 이렇게 입력이 되면( localhost:8765/app )
+      #service-id: Service01  # localhost:8765/Service01/app
+      strip-prefix: false
+      
+    service02:      # 유레카에 등록된 service02 서비스쪽으로 가세영
+      path: /bpp/** # 이렇게 입력이 되면( localhost:8765/bpp )
+      #service-id: Service02
+      strip-prefix: false
+
+eureka:
+  instance:
+    non-secure-port: ${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

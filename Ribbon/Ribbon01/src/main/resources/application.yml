@@ -1,0 +1,16 @@
+server:
+  port: 8081
+  
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+# 내가 tiger라는 주소 표기를 사용하면 
+# localhost:8082로 해석하세요.
+tiger: 
+  ribbon: 
+    listOfServers: 192.168.1.8:8082, 192.168.0.70:8083, 192.168.1.41:8084, 192.168.1.7:8085
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 1

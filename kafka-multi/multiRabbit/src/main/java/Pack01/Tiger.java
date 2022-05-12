@@ -40,7 +40,6 @@ public class Tiger {
 
 		return "<table border='1'>" + "<tr>" + "<th>rank</th>" + "<th>name</th>" + "<th>Score</th>" + "</tr>" + st
 				+ "</table>";
-		//             return "index";
 	}
 
 	@RequestMapping("/t1")
@@ -55,20 +54,11 @@ public class Tiger {
 class RecvResult {
 	@Autowired
 	DataSource dataSource;
-
-	//   @RabbitListener( // 응답받을 때
-	//      bindings = @QueueBinding( // 인수값을 받기 위해
-	//      exchange = @Exchange(name="exchange03", type=ExchangeTypes.TOPIC),
-	//      value=@Queue(name="queue03"), // 받는 키
-	//      key="routingKey03" // 주는 키
-	//      )
-	//   ) 
 	public void receiver(ResultObj resultObj) {
 
 		System.out.println(resultObj.toString());
 	}
 
-	/////////////////////
 	@KafkaListener(topics = "exam", groupId = "foo", containerFactory = "stockChangeListener")
 	public void consume(ResultObj resultObj) {
 		System.out.printf("Consumed message : %s%n", resultObj.toString());
